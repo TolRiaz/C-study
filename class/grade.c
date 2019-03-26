@@ -47,8 +47,10 @@ int main(void) {
 			case 20:
 			case 19:
 				printf("학점은 A+ 입니다.\n");
+				break;
 			case 18:
 				printf("학점은 A 입니다.\n");
+				break;
 			...
 			...
 		}
