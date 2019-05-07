@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+typedef int bool;
+#define true 1
+#define false 0
 
 int main(void) {
 	int t; 				// tickets
@@ -33,15 +36,26 @@ int main(void) {
 			}
 		}
 	}
+	bool re=0;
 	if ( a == 2 ) {
 		for (int i = t; i > 0; i--) {
 			ox[t-i] = 0;
-			for (int j = 6; j > 0; j--) {
+			for (int j = 0; j < 6; j++) {
 				n = rand()%46+1;
-				num[t-i][6-j] = n;
-				for (int k = 0; k < 6; k++) {
-					if ( n == random[k] ) 
-						ox[t-i]++;
+				num[t-i][j] = n;
+				for (int k = 0; k < j; k++) {
+					if (n == num[t-i][k]) {
+						j--;
+						re = 1;
+						break;
+					}
+				re=0;
+				}
+				if (re==0) {
+					for (int l = 0; l<6;l++){
+						if ( n == random[l] ) 
+							ox[t-i]++;
+					}
 				}
 			}
 		}
@@ -50,8 +64,8 @@ int main(void) {
 	printf("당신이 선택한 번호는: \n");
 
 	for (int i = t; i > 0; i--) {
-		for (int j = 6; j > 0; j--) {
-			printf("%d ", num[t-i][6-j]);
+		for (int j = 0; j < 6; j++) {
+			printf("%d ", num[t-i][j]);
 		}
 		puts("");
 	}

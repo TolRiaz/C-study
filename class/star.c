@@ -8,13 +8,9 @@ void main(void) {
 
 	for ( int i=0, j=0; i < Size; i++) {		
 		for ( int k = 0; k < (Size-j); k++) {
-			if (k < j) {
-				printf(" ");
-			} else { printf("*"); }
+			k < j ? printf(" ") : printf("*");
 		}
-			if (i < (Size/2)) {
-				j++;
-			} else { j--; }
+		i < (Size/2) ? j++ : j--; 
 		puts("");
 	}
 }
