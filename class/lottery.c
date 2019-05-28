@@ -5,6 +5,8 @@ typedef int bool;
 #define true 1
 #define false 0
 
+int Sort(*int list);
+
 int main(void) {
 	int t; 				// tickets
 	int a;				// auto
@@ -71,6 +73,8 @@ int main(void) {
 	}
 	printf("입니다. \n");
 
+	Sort(random);		// 당첨 번호 정렬
+
 	printf("이번 당첨 번호는: ");
 	for (int i = 0; i < 6; i++) {
 		printf("%d ", random[i]);
@@ -103,3 +107,15 @@ int main(void) {
     }
 }
 
+int Sort(int *list) {
+    for (int i=0; i<SIZE; i++) {
+        for (int j=0; j<i; j++) {
+            if(list[j] > list[j+1]) {
+                temp=list[j];
+                list[j]=list[j+1];
+                list[j+1]=temp;
+                i--;
+            }
+        }
+    }
+}
